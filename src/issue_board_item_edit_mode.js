@@ -15,23 +15,40 @@ class IssueBoardItemEditMode extends React.Component {
   handleUpdateField = event => this.setState({[event.target.id]: event.target.value});
 
   render() {
-    const {data: {id}} = this.props;
+    const {data: {id}, headerText} = this.props;
     const {text, title} = this.state;
     return (
       <li className="IssueBoardItem">
-        <div className="IssueBoardItem-inputs">
+        {headerText && (
+          <h1>{headerText}</h1>
+        )}
+        <div className="IssueBoardItem-inputsWrapper">
           <label>
             Title
           </label>
-          <input id="title" onChange={event => this.handleUpdateField(event)} value={title}></input>
+          <input 
+            id="title" 
+            className="IssueBoardItem-input"
+            placeholder="enter title text..."
+            onChange={event => this.handleUpdateField(event)} 
+            value={title}>
+          </input>
           <label>
             Text
           </label>
-          <input id="text" onChange={event => this.handleUpdateField(event)} value={text}></input>
+          <input
+           id="text" 
+           className="IssueBoardItem-input"
+           placeholder="enter body text..."
+           onChange={event => this.handleUpdateField(event)} 
+           value={text}>
+          </input>
         </div>
         <div className="IssueBoardItem-buttonsWrapper">
           <a onClick={() => this.props.handleClickSave(this.state)} className="IssueBoardItem-button">save</a>
-          <a onClick={() => this.props.handleClickCancel(id)} className="IssueBoardItem-button">cancel</a>
+          {!this.props.isNewPost && (
+            <a onClick={() => this.props.handleClickCancel(id)} className="IssueBoardItem-button">cancel</a>
+          )}
         </div>
       </li>
     )

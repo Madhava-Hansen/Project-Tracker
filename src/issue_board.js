@@ -9,6 +9,7 @@ class IssueBoard extends React.Component {
     this.state = {
       enabledEditMode: null, 
       posts: this.props.data.posts, 
+      nextId: this.props.data.posts.length + 1,
       newItem: {
         id: null, 
         title: "", 
@@ -19,6 +20,20 @@ class IssueBoard extends React.Component {
   }
 
   handleClickSave = post => {
+    if (!post.id) {
+      // this is a new post so set the id and then push the post into the array
+      post.id = this.state.nextId;
+      const nextStatePosts = this.state.posts.concat(post);
+      const emptyItem = {
+        id: null,
+        title: "",
+        text: "",
+        tags: []
+      }
+      debugger;
+      this.setState({posts: nextStatePosts, nextId: this.state.nextId + 1, newItem: emptyItem});
+      return;
+    }
     const updatedPosts = this.state.posts.map(currentPost => {
       if (currentPost.id === post.id) {
         return post;
@@ -39,7 +54,7 @@ class IssueBoard extends React.Component {
   render() {
     return (
       <div className="IssueBoard">
-        <p>Issue Posting</p>
+        <h1 className="IssueBoard-headingText">Add Issues, Comments and Tasks</h1>
         <ul>
           {this.state.posts.map(data => {
             return data.id === this.state.enabledEditMode ? (
@@ -57,6 +72,13 @@ class IssueBoard extends React.Component {
             )
           })}
         </ul>
+        <IssueBoardItemEditMode
+          data={this.state.newItem}
+          handleClickSave={this.handleClickSave}
+          handleClickCancel={this.handleClickCancel}
+          isNewPost
+          headerText="Add a new post"
+        />
       </div>
     )
   }

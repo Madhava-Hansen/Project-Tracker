@@ -4,12 +4,17 @@
   background-color: tomato;
 }
 
+.IssueBoard {
+  width: 400px;
+  margin: 0 auto;
+}
+
 .IssueBoardItem {
-  width: 300px;
   box-shadow: 3px 3px 3px lightgrey;
   padding: 20px;
   margin: 6px 0;
   background-color: white;
+  list-style-type: none;
   &-buttonsWrapper {
     display: flex;
   }
@@ -18,9 +23,15 @@
     cursor: pointer;
     color: blue;
   }
-  &-inputs {
+  &-inputsWrapper {
     display: flex;
     flex-direction: column;
+  }
+  &-input {
+    margin: 12px 0;
+  }
+  &-headingText {
+    text-align: center;
   }
 }
 
