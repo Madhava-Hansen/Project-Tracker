@@ -10,7 +10,19 @@
       "id": 2,
       "title": "I'm the second title, sooooo.",
       "text": "I'm the second text section, so probably should keep me around <a>Link</a>",
-      "tags": ["feature"]
+      "tags": ["issue"]
+    },
+    {
+      "id": 3,
+      "title": "I'm the third title.",
+      "text": "I'm really cool, let's have a chat about how I can help you track important stuff like comments",
+      "tags": ["comment"]
+    },
+    {
+      "id": 4,
+      "title": "I'm the fourth title.",
+      "text": "I'm really cool, let's have a chat about how I can help you track important stuff like comments",
+      "tags": ["comment", "bug", "issue"]
     }
   ]
 }

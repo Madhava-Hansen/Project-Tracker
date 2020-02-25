@@ -1,42 +1,88 @@
 
 .IssueBoardContainer {
-  border: 5px solid lightgrey;
-  background-color: tomato;
+  background-color: rgba(14, 47, 90, 0.07);
+  padding-bottom: 20px;
 }
 
 .IssueBoard {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
-}
-
-.IssueBoardItem {
-  box-shadow: 3px 3px 3px lightgrey;
-  padding: 20px;
-  margin: 6px 0;
-  background-color: white;
-  list-style-type: none;
-  &-buttonsWrapper {
-    display: flex;
-  }
-  &-button {
-    padding-right: 12px;
-    cursor: pointer;
-    color: blue;
-  }
-  &-inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-posts {
     display: flex;
     flex-direction: column;
-  }
-  &-input {
-    margin: 12px 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
   }
   &-headingText {
     text-align: center;
   }
 }
 
-.IssueBoardItemEditMode {
-  border: 5px solid green;
+.IssueBoardItem {
+  box-shadow: 1px 1px 10px lightgrey;
+  background-color: white;
+  list-style-type: none;
+  margin: 6px 0;
+  width: 540px;
+  border-radius: 3px;
+  padding-top: 6px;
+  &-buttonsWrapper {
+    display: flex;
+    background-color: #fafafa;
+    border-top: 1px solid #f1f1f1;
+    padding: 6px 12px;
+  }
+  &-inputsWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  &-headingText {
+    padding-left: 20px;
+    margin: 12px 0;
+    font-size: 21px;
+  }
+  &-input {
+    margin: 12px 0;
+    height: 35px;
+    padding-left: 12px;
+  }
+  &-title {
+    padding: 0 20px;
+    font-size: 21px;
+  }
+  &-text {
+    padding: 0 20px;
+  }
 }
 
+.FilterTagsDropdown {
+  margin: 12px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-title {
+    margin: 12px;
+  }
+  &-dropdown {
+    width: 210px;
+    height: 25px;
+  }
+}
 
+.Button {
+  padding-right: 12px;
+  cursor: pointer;
+  border: 2px solid #f1f1f1;
+  border-radius: 0px;
+  padding: 6px;
+  color: grey;
+  background-color: white;
+  margin: 6px 3px 6px 3px;
+}

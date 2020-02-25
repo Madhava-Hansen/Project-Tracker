@@ -20,7 +20,7 @@ class IssueBoardItemEditMode extends React.Component {
     return (
       <li className="IssueBoardItem">
         {headerText && (
-          <h1>{headerText}</h1>
+          <h1 className="IssueBoardItem-headingText">{headerText}</h1>
         )}
         <div className="IssueBoardItem-inputsWrapper">
           <label>
@@ -45,9 +45,9 @@ class IssueBoardItemEditMode extends React.Component {
           </input>
         </div>
         <div className="IssueBoardItem-buttonsWrapper">
-          <a onClick={() => this.props.handleClickSave(this.state)} className="IssueBoardItem-button">save</a>
+          <a onClick={() => this.props.handleClickSave(this.state)} className="Button">save</a>
           {!this.props.isNewPost && (
-            <a onClick={() => this.props.handleClickCancel(id)} className="IssueBoardItem-button">cancel</a>
+            <a onClick={() => this.props.handleClickCancel(id)} className="Button">cancel</a>
           )}
         </div>
       </li>

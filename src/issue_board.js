@@ -1,6 +1,7 @@
 import React from 'react';
 import {IssueBoardItemReadOnly} from './issue_board_item_read_only';
 import IssueBoardItemEditMode from './issue_board_item_edit_mode';
+import {FilterTagsDropdown} from './filter_posts_dropdown';
 
 class IssueBoard extends React.Component {
 
@@ -8,7 +9,10 @@ class IssueBoard extends React.Component {
     super(props);
     this.state = {
       enabledEditMode: null, 
+      filterTags: ["", "bug", "issue", "comment"],
+      isFiltered: false,
       posts: this.props.data.posts, 
+      filterPosts: [],
       nextId: this.props.data.posts.length + 1,
       newItem: {
         id: null, 
@@ -16,12 +20,24 @@ class IssueBoard extends React.Component {
         text: "", 
         tags: []
       }
-    };
+    }
+  }
+
+  handleClearFilter = () => this.setState({isFiltered: false});
+
+  handleChangeFilterPosts = event => {
+    const tag = event.target.value;
+    if (!tag) {
+      this.setState({isFiltered: false});
+      return;
+    }
+    const filterPosts = this.state.posts.filter(post => post.tags.includes(tag));
+    this.setState({filterPosts: filterPosts, isFiltered: true});
   }
 
   handleClickSave = post => {
     if (!post.id) {
-      // this is a new post so set the id and then push the post into the array
+      // this is a new post so set the id and then concat with current posts array
       post.id = this.state.nextId;
       const nextStatePosts = this.state.posts.concat(post);
       const emptyItem = {
@@ -30,8 +46,12 @@ class IssueBoard extends React.Component {
         text: "",
         tags: []
       }
-      debugger;
-      this.setState({posts: nextStatePosts, nextId: this.state.nextId + 1, newItem: emptyItem});
+      this.setState({
+        posts: nextStatePosts, 
+        nextId: this.state.nextId + 1, 
+        newItem: emptyItem
+      })
+
       return;
     }
     const updatedPosts = this.state.posts.map(currentPost => {
@@ -45,18 +65,24 @@ class IssueBoard extends React.Component {
     this.setState({posts: updatedPosts, enabledEditMode: null});
   }
 
-  handleClickCancel = id => this.setState({enabledEditMode: null});
+  handleClickCancel = () => this.setState({enabledEditMode: null});
 
   handleClickEdit = id => this.setState({enabledEditMode: id});
 
   handleClickDelete = id => this.setState({posts: this.state.posts.filter(post => post.id != id)});
 
   render() {
+    const currentPosts = this.state.isFiltered ? this.state.filterPosts : this.state.posts;
     return (
       <div className="IssueBoard">
         <h1 className="IssueBoard-headingText">Add Issues, Comments and Tasks</h1>
-        <ul>
-          {this.state.posts.map(data => {
+        <ul className="IssueBoard-posts">
+          <FilterTagsDropdown 
+            handleChangeFilterPosts={this.handleChangeFilterPosts} 
+            handleClearFilter={this.handleClearFilter}
+            tags={this.state.filterTags} 
+          />
+          {currentPosts.map(data => {
             return data.id === this.state.enabledEditMode ? (
              <IssueBoardItemEditMode 
               data={data}
@@ -71,14 +97,14 @@ class IssueBoard extends React.Component {
             />
             )
           })}
+          <IssueBoardItemEditMode
+            data={this.state.newItem}
+            handleClickSave={this.handleClickSave}
+            handleClickCancel={this.handleClickCancel}
+            isNewPost
+            headerText="Add a new post"
+          />
         </ul>
-        <IssueBoardItemEditMode
-          data={this.state.newItem}
-          handleClickSave={this.handleClickSave}
-          handleClickCancel={this.handleClickCancel}
-          isNewPost
-          headerText="Add a new post"
-        />
       </div>
     )
   }
