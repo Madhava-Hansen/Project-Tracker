@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "I'm the first title, what's up",
+      "text": "I'm the first text section so don't delete me"
+    },
+    {
+      "id": 2,
+      "title": "I'm the second title, sooooo.",
+      "text": "I'm the second text section, so probably should keep me around <a>Link</a>"
+    }
+  ]
+}
