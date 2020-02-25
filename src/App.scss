@@ -18,6 +18,14 @@
     cursor: pointer;
     color: blue;
   }
+  &-inputs {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.IssueBoardItemEditMode {
+  border: 5px solid green;
 }
 
 
