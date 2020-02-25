@@ -14,14 +14,15 @@ class IssueBoard extends React.Component {
       posts: this.props.data.posts, 
       filterPosts: [],
       nextId: this.props.data.posts.length + 1,
-      newItem: {
-        id: null, 
-        title: "", 
-        text: "", 
-        tags: []
-      }
     }
+    this.newPostData = {id: null, title: "", text: "", tags: []};
   }
+
+  handleAddTagGlobal = tag => {
+    if (!this.state.filterTags.includes(tag)) {
+      this.setState({filterTags: this.state.filterTags.concat(tag)})
+    }
+  };
 
   handleClearFilter = () => this.setState({isFiltered: false});
 
@@ -40,16 +41,9 @@ class IssueBoard extends React.Component {
       // this is a new post so set the id and then concat with current posts array
       post.id = this.state.nextId;
       const nextStatePosts = this.state.posts.concat(post);
-      const emptyItem = {
-        id: null,
-        title: "",
-        text: "",
-        tags: []
-      }
       this.setState({
         posts: nextStatePosts, 
-        nextId: this.state.nextId + 1, 
-        newItem: emptyItem
+        nextId: this.state.nextId + 1
       })
 
       return;
@@ -88,6 +82,8 @@ class IssueBoard extends React.Component {
               data={data}
               handleClickSave={this.handleClickSave}
               handleClickCancel={this.handleClickCancel}
+              handleAddTagGlobal={this.handleAddTagGlobal}
+              filterTags={this.state.filterTags}
              />
             ) : (
               <IssueBoardItemReadOnly 
@@ -98,9 +94,11 @@ class IssueBoard extends React.Component {
             )
           })}
           <IssueBoardItemEditMode
-            data={this.state.newItem}
+            data={this.newPostData}
             handleClickSave={this.handleClickSave}
             handleClickCancel={this.handleClickCancel}
+            handleAddTagGlobal={this.handleAddTagGlobal}
+            filterTags={this.state.filterTags}
             isNewPost
             headerText="Add a new post"
           />
