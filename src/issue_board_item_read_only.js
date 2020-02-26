@@ -7,16 +7,16 @@ export const IssueBoardItemReadOnly = ({
   }) => {
     return (
       <li className="IssueBoardItem" key={data.id}>
-      <h1 className="IssueBoardItem-title">{data.title}</h1>
-      <p className="IssueBoardItem-text">{data.text}</p>
-      <ul className="IssueBoardItem-tags">
-        <li className="IssueBoardItem-tagsTitle">tags:</li>
-        {data.tags.map(tag => tag && <li><a className="Button Button-tagDisplay">{tag}</a></li>)}
-      </ul>
-      <div className="IssueBoardItem-buttonsWrapper">
-        <a onClick={() => handleClickEdit(data.id)} className="Button">edit</a>
-        <a onClick={() => handleClickDelete(data.id)} className="Button">delete</a>
-      </div>
+        <h1 className="IssueBoardItem-title">{data.title}</h1>
+        <p className="IssueBoardItem-text">{data.text}</p>
+        <ul className="IssueBoardItem-tags">
+          <li className="IssueBoardItem-tagsTitle">tags:</li>
+          {data.tags.map(tag => tag && <li><a className="Button Button-tagDisplay">{tag}</a></li>)}
+        </ul>
+        <div className="IssueBoardItem-buttonsWrapper">
+          <a onClick={() => handleClickEdit(data.id)} className="Button">edit</a>
+          <a onClick={() => handleClickDelete(data.id)} className="Button">delete</a>
+        </div>
     </li>
     )
 }
