@@ -5,9 +5,6 @@ export const IssueBoardItemReadOnly = ({
     handleClickDelete, 
     handleClickEdit
   }) => {
-    // const parser = new DOMParser();
-    // const title = parser.parseFromString(data.title, 'text/html');
-    // const text = parser.parseFromString(data.text, 'text/html');
     return (
       <li className="IssueBoardItem" key={data.id}>
       <h1 className="IssueBoardItem-title">{data.title}</h1>

@@ -4,7 +4,7 @@
       "id": 1,
       "title": "I'm the first title, what's up",
       "text": "I'm the first text section so don't delete me",
-      "tags": ["bug"]
+      "tags": ["bug", "issue"]
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "id": 3,
       "title": "I'm the third title.",
       "text": "I'm really cool, let's have a chat about how I can help you track important stuff like comments",
-      "tags": ["comment"]
+      "tags": ["comment", "bug"]
     },
     {
       "id": 4,
