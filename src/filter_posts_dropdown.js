@@ -7,7 +7,7 @@ export const FilterTagsDropdown = ({tags, handleChangeFilterPosts, handleClearFi
       <select onChange={handleChangeFilterPosts} className="FilterTagsDropdown-dropdown">
         {tags.map(tag => <option value={tag}>{tag}</option>)}
       </select>
-      <a className="Button" onClick={handleClearFilter}>clear filter</a>
+      <a className="Button-primary" onClick={handleClearFilter}>clear filter</a>
     </div>
   )
 }

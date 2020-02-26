@@ -11,11 +11,11 @@ export const IssueBoardItemReadOnly = ({
         <p className="IssueBoardItem-text">{text}</p>
         <ul className="IssueBoardItem-tags">
           <li className="IssueBoardItem-tagsTitle">tags:</li>
-          {tags.map(tag => tag && <li><a className="Button Button-tagDisplay">{tag}</a></li>)}
+          {tags.map(tag => tag && <li><a className="Button-primary Button--readOnly">{tag}</a></li>)}
         </ul>
         <div className="IssueBoardItem-buttonsWrapper">
-          <a onClick={() => handleClickEdit(id)} className="Button">edit</a>
-          <a onClick={() => handleClickDelete(id)} className="Button">delete</a>
+          <a onClick={() => handleClickEdit(id)} className="Button-primary">edit</a>
+          <a onClick={() => handleClickDelete(id)} className="Button-primary">delete</a>
         </div>
     </li>
     )

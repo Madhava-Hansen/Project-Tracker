@@ -84,9 +84,9 @@ class IssueBoardItemEditMode extends React.Component {
           />
         </div>
         <div className="IssueBoardItem-buttonsWrapper">
-          <a onClick={this.handleClickSave} className="Button">save</a>
+          <a onClick={this.handleClickSave} className="Button-primary">save</a>
           {!this.props.isNewPost && (
-            <a onClick={() => this.props.handleClickCancel(data && data.id)} className="Button">cancel</a>
+            <a onClick={() => this.props.handleClickCancel(data && data.id)} className="Button-primary">cancel</a>
           )}
         </div>
       </li>

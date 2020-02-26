@@ -96,17 +96,20 @@
 }
 
 .Button {
-  padding-right: 12px;
-  cursor: pointer;
-  border: 2px solid #f1f1f1;
-  border-radius: 0px;
-  padding: 6px;
-  color: grey;
-  background-color: white;
-  margin: 6px 3px 6px 3px;
-  &-tagDisplay {
+  &-primary {
+    padding-right: 12px;
+    cursor: pointer;
+    border: 2px solid #f1f1f1;
+    border-radius: 0px;
+    padding: 6px;
+    color: grey;
+    background-color: white;
+    margin: 6px 3px 6px 3px;
+  }
+  &--readOnly {
     border-radius: 100px;
     color: steelblue;
     margin: 12px 6px;
+    cursor: default;
   }
 }
