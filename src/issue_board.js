@@ -30,6 +30,7 @@ class IssueBoard extends React.Component {
     const tag = event.target.value;
     if (!tag) {
       this.setState({isFiltered: false});
+      
       return;
     }
     const filterPosts = this.state.posts.filter(post => post.tags.includes(tag));
